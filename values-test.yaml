@@ -5,7 +5,7 @@ deployment:
   replicas: 1
   image:
     repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
-    tag: v0.1.4
+    tag: v0.1.5
   command:
     - node
     - index.js
