@@ -1,0 +1,22 @@
+labels:
+  app: app-placeholder
+
+deployment:
+  image:
+    repository: placeholder
+    tag: latest
+  containerPort: 3000
+  secretName: placeholder-secret
+
+externalSecret:
+  name: placeholder-external
+  awsSecretName: placeholder
+  targetSecretName: placeholder
+  refreshInterval: 1h
+
+service:
+  name: placeholder-svc
+  type: ClusterIP
+  port: 3000
+  targetPort: 3000
+  nodePort: 0

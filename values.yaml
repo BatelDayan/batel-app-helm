@@ -1,0 +1,93 @@
+namespace: batel-ns
+
+global:
+  secretStore:
+    name: aws-secrets
+
+appA:
+  labels:
+    app: app-a
+  deployment:
+    name: deployment-a
+    image:
+      repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
+      tag: v0.1.6
+    containerPort: 3000
+    secretName: batel-app-a-db-secret
+  service:
+    name: svc-a
+    type: NodePort
+    port: 3000
+    targetPort: 3000
+    nodePort: 30001
+  serviceAccount:
+    name: eso-sa
+
+appB:
+  labels:
+    app: app-b
+  deployment:
+    name: deployment-b
+    image:
+      repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
+      tag: v0.1.6
+    containerPort: 3000
+    secretName: batel-app-a-db-secret
+  service:
+    name: svc-b
+    type: NodePort
+    port: 3000
+    targetPort: 3000
+    nodePort: 30002
+  serviceAccount:
+    name: eso-sa
+
+appC:
+  labels:
+    app: app-c
+  deployment:
+    name: deployment-c
+    image:
+      repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
+      tag: v0.1.6
+    containerPort: 3000
+    secretName: batel-app-c-db-secret
+  service:
+    name: svc-c
+    type: NodePort
+    port: 3000
+    targetPort: 3000
+    nodePort: 30003
+  serviceAccount:
+    name: eso-sa
+
+
+secrets:
+  namespace: batel-ns
+  secretStore:
+    name: aws-secrets
+    serviceAccountName: eso-sa
+    aws:
+      service: SecretsManager
+      region: us-east-2
+  serviceAccount:
+    name: eso-sa
+    roleArn: arn:aws:iam::314525640319:role/batel-eso-irsa-role
+
+appA-es:
+    name: batel-db-secret-a
+    awsSecretName: batel-app-a-db-secret
+    targetSecretName: batel-app-a-db-secret
+    refreshInterval: 1h
+
+appB-es:
+    name: batel-db-secret-b
+    awsSecretName: batel-app-b-db-secret
+    targetSecretName: batel-app-b-db-secret
+    refreshInterval: 1h
+
+appBC-es: 
+    name: batel-db-secret-c
+    awsSecretName: batel-app-c-db-secret
+    targetSecretName: batel-app-c-db-secret
+    refreshInterval: 1h

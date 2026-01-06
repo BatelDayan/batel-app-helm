@@ -1,0 +1,29 @@
+apiVersion: v2
+name: batel-app-umbrella
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+description: "Umbrella chart to deploy appA, appB, and appC"
+
+dependencies:
+  - name: secrets
+    version: 0.1.0
+    repository: "file://charts/secrets"
+    alias: secrets
+
+  - name: external-secrets
+    version: 0.1.0
+    repository: "file://charts/external-secrets"
+    alias: appA-es  
+
+  - name: batel-app
+    version: 0.1.0
+    repository: "file://charts/batel-app"
+    alias: appA
+
+  - name: batel-app
+    version: 0.1.0
+    repository: "file://charts/batel-app"
+    alias: appB  
+
+    
