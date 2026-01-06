@@ -16,7 +16,7 @@ spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       containers:
         - name: {{ .Values.deployment.name }}
-          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.global.image.tag }}"
           command:
             - node
             - index.js
