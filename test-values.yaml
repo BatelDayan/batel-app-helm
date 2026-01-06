@@ -1,10 +1,9 @@
 namespace: batel-ns
-
 global:
-    secretStore:
-      name: aws-secrets
-    image:
-      tag: v0.1.3
+  secretStore:
+    name: aws-secrets
+  image:
+    tag: v0.1.10
 appA:
   labels:
     app: app-a
@@ -22,7 +21,6 @@ appA:
     nodePort: 30001
   serviceAccount:
     name: eso-sa
-
 appB:
   labels:
     app: app-b
@@ -40,7 +38,6 @@ appB:
     nodePort: 30002
   serviceAccount:
     name: eso-sa
-
 secrets:
   namespace: batel-ns
   secretStore:
@@ -52,23 +49,18 @@ secrets:
   serviceAccount:
     name: eso-sa
     roleArn: arn:aws:iam::314525640319:role/batel-eso-irsa-role
-
-
 appA-es:
-    name: batel-db-secret-a
-    awsSecretName: batel-app-a-db-secret
-    targetSecretName: batel-app-a-db-secret
-    refreshInterval: 1h
-
+  name: batel-db-secret-a
+  awsSecretName: batel-app-a-db-secret
+  targetSecretName: batel-app-a-db-secret
+  refreshInterval: 1h
 appB-es:
-    name: batel-db-secret-b
-    awsSecretName: batel-app-b-db-secret
-    targetSecretName: batel-app-b-db-secret
-    refreshInterval: 1h
-
-appBC-es: 
-    name: batel-db-secret-c
-    awsSecretName: batel-app-c-db-secret
-    targetSecretName: batel-app-c-db-secret
-    refreshInterval: 1h      
-
+  name: batel-db-secret-b
+  awsSecretName: batel-app-b-db-secret
+  targetSecretName: batel-app-b-db-secret
+  refreshInterval: 1h
+appBC-es:
+  name: batel-db-secret-c
+  awsSecretName: batel-app-c-db-secret
+  targetSecretName: batel-app-c-db-secret
+  refreshInterval: 1h
