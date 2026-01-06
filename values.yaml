@@ -3,6 +3,8 @@ namespace: batel-ns
 global:
   secretStore:
     name: aws-secrets
+  image:
+    tag: v0.1.3  
 
 appA:
   labels:
@@ -11,7 +13,6 @@ appA:
     name: deployment-a
     image:
       repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
-      tag: v0.1.6
     containerPort: 3000
     secretName: batel-app-a-db-secret
   service:
@@ -30,7 +31,6 @@ appB:
     name: deployment-b
     image:
       repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
-      tag: v0.1.6
     containerPort: 3000
     secretName: batel-app-a-db-secret
   service:
@@ -49,7 +49,6 @@ appC:
     name: deployment-c
     image:
       repository: 314525640319.dkr.ecr.us-east-2.amazonaws.com/batel-app-img
-      tag: v0.1.6
     containerPort: 3000
     secretName: batel-app-c-db-secret
   service:
