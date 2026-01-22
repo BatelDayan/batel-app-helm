@@ -24,6 +24,7 @@ dependencies:
   - name: batel-app
     version: 0.1.0
     repository: "file://charts/batel-app"
-    alias: appB  
+    alias: appB    
+      
 
     
