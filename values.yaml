@@ -3,7 +3,7 @@ global:
   secretStore:
     name: aws-secrets
   image:
-    tag: v0.1.10
+    tag: v0.1.11
 appA:
   labels:
     app: app-a
